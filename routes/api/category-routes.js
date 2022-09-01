@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No category with id: ' + req.params.id});
+      res.status(404).json({ message: 'No category was found with ID:' + req.params.id });
       return;
     }
 
@@ -60,7 +60,7 @@ router.put('/:id', async (req, res) => {
     });
 
     if (!categoryData) {
-      res.status(404).json({ message: 'No category found with ID:' + req.params.id });
+      res.status(404).json({ message: 'No category was found with ID:' + req.params.id });
       return;
     }
   
@@ -78,7 +78,7 @@ router.put('/:id', async (req, res) => {
   };
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   
   try {
     const deleteCategoryData = await Category.destroy({
@@ -88,7 +88,7 @@ router.delete('/:id', (req, res) => {
     });
 
     if (!deleteCategoryData) {
-      res.status(404).json({ message: 'No category found with ID: ' + req.params.id });
+      res.status(404).json({ message: 'No category was found with ID: ' + req.params.id });
       return;
     }
 
